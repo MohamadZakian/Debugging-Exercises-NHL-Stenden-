@@ -1,10 +1,8 @@
-### Debugging Exercise 1: Indexing a Set in Python
+# Debugging Exercise 1: Indexing a Set in Python
 
-# Identified Issue
+### Identified Issue
 
-The original implementation attempted to retrieve an element by index from a Set.
-
-However, in Python:
+The original implementation attempted to retrieve an element by index from a Set. However, in Python:
 
 - A Set is an **unordered collection
 - It does not support indexing
@@ -14,17 +12,17 @@ Because indexing relies on order, the returned results were unpredictable.
 
 ---
 
-# Root Cause
+### Root Cause
 
 The bug was not in the loop itself, but in the choice of data structure. Using a loop was merely a workaround to simulate indexing, since sets cannot be accessed by position. This represents a "design flaw", not a "syntax error".
 
 ---
 
-# Correct Approach
+### Correct Approach
 
 Index-based access requires an ordered collection, such as a List.
 
-# Overall Insight
+### Overall Insight
 
 - The original loop was necessary because sets are not indexable.
 - However, the real issue was the incorrect data structure selection.
@@ -34,9 +32,9 @@ Index-based access requires an ordered collection, such as a List.
 --- --- ---
 --- --- ---
 
-### Debugging Exercise 2: Swapping Coordinates with NumPy
+# Debugging Exercise 2: Swapping Coordinates with NumPy
 
-# Issue 1 – Obvious Error
+### Issue 1 – Obvious Error
 
 The original assignment contained a typo:
 
@@ -49,7 +47,7 @@ Column `1` was duplicated on the right-hand side, which made the swap incorrect.
 
 ---
 
-# Issue 2 – Deeper Problem (Memory Semantics)
+### Issue 2 – Deeper Problem (Memory Semantics)
 
 Even after correcting the typo, the implementation remained flawed, since NumPy slicing returns views, not copies, which means:
 
@@ -62,7 +60,7 @@ This is a classic in-place mutation issue in vectorized numerical computing.
 
 ---
 
-# Overall Insight
+### Overall Insight
 
 - The first issue was a typo in column reassignment.
 - The deeper issue was misunderstanding NumPy's memory model.
